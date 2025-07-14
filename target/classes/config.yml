@@ -1,0 +1,29 @@
+#                                     ____         __  __         _____             __ _       
+#     /\                             |  _ \       / _|/ _|       / ____|           / _(_)      
+#    /  \   _ __ _ __ ___   ___  _ __| |_) |_   _| |_| |_ ___   | |     ___  _ __ | |_ _  __ _ 
+#   / /\ \ | '__| '_ ` _ \ / _ \| '__|  _ <| | | |  _|  _/ __|  | |    / _ \| '_ \|  _| |/ _` |
+#  / ____ \| |  | | | | | | (_) | |  | |_) | |_| | | | | \__ \  | |___| (_) | | | | | | | (_| |
+# /_/    \_\_|  |_| |_| |_|\___/|_|  |____/ \__,_|_| |_| |___/   \_____\___/|_| |_|_| |_|\__, |
+#                                                                                         __/ |
+#                                                                                        |___/ 
+#
+# Create as many Armor Sets as you please!
+
+armor-sets:
+  # Internal name for the Armor Set
+  example_set:
+    # Make sure this keyword is in all pieces of the Armor Set's Lore
+    # Keyword can use basic & formatting
+    keyword: "&2Example"
+    # Potion Effects to give the player wearing a FULL SET
+    effects:
+      # All Available Effects https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
+      - type: SPEED
+        # Config Level 0 = In Game Level 1
+        level: 0
+        # Duration in seconds, set to -1 for permanent/repeating effect
+        duration: -1
+      - type: REGENERATION
+        level: 1
+        duration: 60
+	    
