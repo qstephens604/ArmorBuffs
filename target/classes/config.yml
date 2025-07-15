@@ -13,10 +13,11 @@ armor-sets:
   # Internal name for the Armor Set
   example_set:
     # Make sure this keyword is in all pieces of the Armor Set's Lore
-    # Keyword can use basic & formatting
-    keyword: "&2Example"
+    # Keyword the plugin will look for in ALL pieces of armor.
+    keyword: "Example"
     # Potion Effects to give the player wearing a FULL SET
     effects:
+      # AT THIS POINT IN TIME ALL EFFECTS ARE PERMANENT. I MAY REMOVE THE DURATION OPTION COMPLETELY IN THE FUTURE.
       # All Available Effects https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
       - type: SPEED
         # Config Level 0 = In Game Level 1
