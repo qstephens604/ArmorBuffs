@@ -4,6 +4,7 @@ import com.frostwoodmc.armorbuffs.ArmorBuffs;
 import com.frostwoodmc.armorbuffs.model.ArmorEffect;
 import com.frostwoodmc.armorbuffs.model.ArmorSet;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,14 +32,13 @@ public class ArmorBuffTask implements Runnable {
                         int level = effect.getLevel();
                         int durationTicks = effect.getDurationTicks();
 
-                        // Only reapply permanent effects or refresh short ones
                         if (effect.isPermanent() || shouldRefreshEffect(player, type, durationTicks, level)) {
                             player.addPotionEffect(new PotionEffect(
                                 type,
-                                effect.isPermanent() ? 80 : durationTicks, // ~4s buffer for -1 duration
+                                effect.isPermanent() ? 80 : durationTicks,
                                 level,
-                                true,   // ambient
-                                false   // particles
+                                true,
+                                false
                             ), true);
                         }
                     }
@@ -63,7 +63,8 @@ public class ArmorBuffTask implements Runnable {
         if (!meta.hasLore()) return false;
 
         for (String line : meta.getLore()) {
-            if (line != null && line.contains(keyword)) {
+            String stripped = ChatColor.stripColor(line);
+            if (stripped != null && stripped.contains(keyword)) {
                 return true;
             }
         }

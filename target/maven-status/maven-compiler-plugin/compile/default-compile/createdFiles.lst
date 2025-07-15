@@ -1,4 +1,5 @@
 com\frostwoodmc\armorbuffs\model\ArmorEffect.class
+com\frostwoodmc\armorbuffs\ArmorBuffsCommand.class
 com\frostwoodmc\armorbuffs\config\ArmorSetLoader.class
 com\frostwoodmc\armorbuffs\ArmorBuffs.class
 com\frostwoodmc\armorbuffs\logic\ArmorBuffTask.class

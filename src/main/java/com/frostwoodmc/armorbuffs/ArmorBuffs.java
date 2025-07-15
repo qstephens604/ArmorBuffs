@@ -18,9 +18,8 @@ public class ArmorBuffs extends JavaPlugin {
 
         // Load armor sets from config.yml
         armorSets = ArmorSetLoader.loadArmorSets(getConfig());
-
         getLogger().info("Loaded " + armorSets.size() + " armor set(s).");
-
+        getCommand("armorbuffs").setExecutor(new ArmorBuffsCommand());
         // We’ll add event listeners here later
         Bukkit.getScheduler().runTaskTimer(this, new ArmorBuffTask(), 0L, 60L); // every 3 seconds
 
@@ -44,5 +43,9 @@ public class ArmorBuffs extends JavaPlugin {
     @Override
     public void onLoad() {
         instance = this;
+    }
+    
+    public void setArmorSets(Map<String, ArmorSet> sets) {
+        this.armorSets = sets;
     }
 }
