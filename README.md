@@ -5,8 +5,6 @@ ArmorBuffs is a simple plugin made to give player wearing full sets of armor spe
 
 <img width="634" height="348" alt="image" src="https://github.com/user-attachments/assets/0b148d36-b720-4480-9707-51620f0ebf40" />
 
-Keyword Must be in the Items Lore! The Items name does not matter!
-
 ## Commands
 `/armorbuffs reload` - Updates the plugin with any changes made to the config! 
 
@@ -25,11 +23,8 @@ Keyword Must be in the Items Lore! The Items name does not matter!
 # Create as many Armor Sets as you please!
 
 armor-sets:
-  # Internal name for the Armor Set
+  # Name / ID of the Armor Set!
   example_set:
-    # Make sure this keyword is in all pieces of the Armor Set's Lore
-    # Keyword the plugin will look for in ALL pieces of armor.
-    keyword: "Example"
     # Potion Effects to give the player wearing a FULL SET
     effects:
       # AT THIS POINT IN TIME ALL EFFECTS ARE PERMANENT. I MAY REMOVE THE DURATION OPTION COMPLETELY IN THE FUTURE.
