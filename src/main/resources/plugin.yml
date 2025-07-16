@@ -1,15 +1,15 @@
 name: ArmorBuffs
-version: 0.1.1
+version: 0.2.0
 main: com.frostwoodmc.armorbuffs.ArmorBuffs
 api-version: 1.21
 
 commands:
   armorbuffs:
-    description: Reload the ArmorBuffs config
-    usage: /<command> reload
-    permission: armorbuffs.reload
+    description: ArmorBuffs admin command
+    usage: /armorbuffs <reload|tag>
+    permission: armorbuffs.admin
 
 permissions:
-  armorbuffs.reload:
-    description: Allows reloading the plugin config
+  armorbuffs.admin:
+    description: Basic Admin functions.
     default: op

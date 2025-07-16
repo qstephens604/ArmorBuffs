@@ -19,9 +19,14 @@ public class ArmorBuffs extends JavaPlugin {
         // Load armor sets from config.yml
         armorSets = ArmorSetLoader.loadArmorSets(getConfig());
         getLogger().info("Loaded " + armorSets.size() + " armor set(s).");
-        getCommand("armorbuffs").setExecutor(new ArmorBuffsCommand());
-        // We’ll add event listeners here later
-        Bukkit.getScheduler().runTaskTimer(this, new ArmorBuffTask(), 0L, 60L); // every 3 seconds
+
+        // Register the command and tab completer
+        ArmorBuffsCommand cmd = new ArmorBuffsCommand(this);
+        getCommand("armorbuffs").setExecutor(cmd);
+        getCommand("armorbuffs").setTabCompleter(cmd);
+
+        // Changed to BukkitRunnable
+        new ArmorBuffTask(this).runTaskTimer(this, 0L, 60L); // runs every 3 seconds
 
     }
 
@@ -29,6 +34,12 @@ public class ArmorBuffs extends JavaPlugin {
     public void onDisable() {
         getLogger().info("ArmorBuffs has been disabled.");
     }
+    
+    public void loadArmorSets() {
+        this.armorSets = ArmorSetLoader.loadArmorSets(getConfig());
+        getLogger().info("Reloaded " + armorSets.size() + " armor set(s).");
+    }
+
 
     public Map<String, ArmorSet> getArmorSets() {
         return armorSets;

@@ -22,9 +22,6 @@ public class ArmorSetLoader {
             ConfigurationSection setSection = setsSection.getConfigurationSection(setKey);
             if (setSection == null) continue;
 
-            String keyword = setSection.getString("keyword");
-            if (keyword == null) continue;
-
             List<ArmorEffect> effects = new ArrayList<>();
             List<Map<?, ?>> rawEffects = setSection.getMapList("effects");
 
@@ -47,7 +44,7 @@ public class ArmorSetLoader {
                 }
             }
 
-            armorSets.put(setKey, new ArmorSet(keyword, effects));
+            armorSets.put(setKey, new ArmorSet(setKey, effects)); // ✅ use setKey as setId
         }
 
         return armorSets;
