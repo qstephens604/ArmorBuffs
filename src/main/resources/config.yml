@@ -10,11 +10,8 @@
 # Create as many Armor Sets as you please!
 
 armor-sets:
-  # Internal name for the Armor Set
+  # Name / ID of the Armor Set!
   example_set:
-    # Make sure this keyword is in all pieces of the Armor Set's Lore
-    # Keyword the plugin will look for in ALL pieces of armor.
-    keyword: "Example"
     # Potion Effects to give the player wearing a FULL SET
     effects:
       # AT THIS POINT IN TIME ALL EFFECTS ARE PERMANENT. I MAY REMOVE THE DURATION OPTION COMPLETELY IN THE FUTURE.
