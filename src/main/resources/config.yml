@@ -10,7 +10,7 @@
 # Create as many Armor Sets as you please!
 
 armor-sets:
-  # Name / ID of the Armor Set!
+  # (setId) Name / ID of the Armor Set!
   example_set:
     # Potion Effects to give the player wearing a FULL SET
     effects:
