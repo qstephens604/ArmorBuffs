@@ -4,16 +4,16 @@ import java.util.List;
 
 public class ArmorSet {
 	
-	private final String keyword;
+	private final String setId;
 	private final List<ArmorEffect> effects;
 	
-	public ArmorSet(String keyword, List<ArmorEffect> effects) {
-		this.keyword = keyword;
+	public ArmorSet(String setId, List<ArmorEffect> effects) {
+		this.setId = setId;
 		this.effects = effects;
 	}
 	
-	public String getKeyword() {
-		return keyword;
+	public String getsetId() {
+		return setId;
 	}
 	
 	public List<ArmorEffect> getEffects() {

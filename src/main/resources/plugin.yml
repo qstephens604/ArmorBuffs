@@ -5,11 +5,11 @@ api-version: 1.21
 
 commands:
   armorbuffs:
-    description: Reload the ArmorBuffs config
-    usage: /<command> reload
-    permission: armorbuffs.reload
+    description: ArmorBuffs admin command
+    usage: /armorbuffs <reload|tag>
+    permission: armorbuffs.admin
 
 permissions:
-  armorbuffs.reload:
-    description: Allows reloading the plugin config
+  armorbuffs.admin:
+    description: Basic Admin functions.
     default: op
