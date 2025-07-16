@@ -7,6 +7,7 @@ ArmorBuffs is a simple plugin made to give player wearing full sets of armor spe
 
 ## Commands
 `/armorbuffs tag <setId>` - Tags the currently held item!
+
 `/armorbuffs reload` - Updates the plugin with any changes made to the config! 
 
 ## Example Config
