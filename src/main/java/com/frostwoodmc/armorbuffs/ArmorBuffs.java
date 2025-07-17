@@ -1,12 +1,21 @@
 package com.frostwoodmc.armorbuffs;
 
-import com.frostwoodmc.armorbuffs.logic.ArmorBuffTask;
-import com.frostwoodmc.armorbuffs.config.ArmorSetLoader;
-import com.frostwoodmc.armorbuffs.model.ArmorSet;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-
 import java.util.Map;
+
+import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import com.frostwoodmc.armorbuffs.config.ArmorSetLoader;
+import com.frostwoodmc.armorbuffs.listeners.ArmorEquipListener;
+import com.frostwoodmc.armorbuffs.model.ArmorEffect;
+import com.frostwoodmc.armorbuffs.model.ArmorSet;
 
 public class ArmorBuffs extends JavaPlugin {
 
@@ -20,13 +29,12 @@ public class ArmorBuffs extends JavaPlugin {
         armorSets = ArmorSetLoader.loadArmorSets(getConfig());
         getLogger().info("Loaded " + armorSets.size() + " armor set(s).");
 
-        // Register the command and tab completer
+        // Register the command, tab completer, Listener 
         ArmorBuffsCommand cmd = new ArmorBuffsCommand(this);
         getCommand("armorbuffs").setExecutor(cmd);
         getCommand("armorbuffs").setTabCompleter(cmd);
+        getServer().getPluginManager().registerEvents(new ArmorEquipListener(this), this);
 
-        // Changed to BukkitRunnable
-        new ArmorBuffTask(this).runTaskTimer(this, 0L, 60L); // runs every 3 seconds
 
     }
 
@@ -59,4 +67,45 @@ public class ArmorBuffs extends JavaPlugin {
     public void setArmorSets(Map<String, ArmorSet> sets) {
         this.armorSets = sets;
     }
+    
+    //
+    public void checkAndApplyEffects(Player player) {
+        for (ArmorSet set : armorSets.values()) {
+            if (isWearingFullSet(player, set.getsetId())) {
+                for (ArmorEffect effect : set.getEffects()) {
+                    PotionEffectType type = effect.getType();
+                    int level = effect.getLevel();
+
+                    PotionEffect current = player.getPotionEffect(type);
+                    boolean needsRefresh = current == null || current.getAmplifier() != level;
+
+                    if (needsRefresh) {
+                        player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, level, true, false), true);
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean isWearingFullSet(Player player, String setId) {
+        ItemStack[] armor = player.getInventory().getArmorContents();
+        for (ItemStack piece : armor) {
+            if (piece == null || !hasArmorBuffTag(piece, setId)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean hasArmorBuffTag(ItemStack item, String expectedSetId) {
+        if (!item.hasItemMeta()) return false;
+        ItemMeta meta = item.getItemMeta();
+
+        NamespacedKey key = new NamespacedKey(this, "armor_set");
+        PersistentDataContainer container = meta.getPersistentDataContainer();
+
+        return container.has(key, PersistentDataType.STRING)
+            && expectedSetId.equals(container.get(key, PersistentDataType.STRING));
+    }
+    
 }
