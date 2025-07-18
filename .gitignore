@@ -29,3 +29,9 @@ Thumbs.db
 
 # ===== Git =====
 *.orig
+.project
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+.vscode/settings.json
+.project
+
