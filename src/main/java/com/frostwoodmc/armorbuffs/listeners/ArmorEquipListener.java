@@ -3,7 +3,6 @@ package com.frostwoodmc.armorbuffs.listeners;
 import com.frostwoodmc.armorbuffs.ArmorBuffs;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.block.Dispenser;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,8 +14,6 @@ import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
 
 public class ArmorEquipListener implements Listener {
 

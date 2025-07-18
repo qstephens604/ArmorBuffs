@@ -80,7 +80,7 @@ public class ArmorBuffs extends JavaPlugin {
                     boolean needsRefresh = current == null || current.getAmplifier() != level;
 
                     if (needsRefresh) {
-                        player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, level, true, false), true);
+                        player.addPotionEffect(new PotionEffect(type, Integer.MAX_VALUE, level, true, false));
                     }
                 }
             }

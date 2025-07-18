@@ -2,6 +2,8 @@ package com.frostwoodmc.armorbuffs.config;
 
 import com.frostwoodmc.armorbuffs.model.ArmorEffect;
 import com.frostwoodmc.armorbuffs.model.ArmorSet;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.potion.PotionEffectType;
@@ -31,7 +33,9 @@ public class ArmorSetLoader {
                     int level = (int) effectMap.get("level");
                     int duration = (int) effectMap.get("duration");
 
-                    PotionEffectType type = PotionEffectType.getByName(typeName.toUpperCase());
+                    // Use Registry.EFFECT instead of deprecated getByName()
+                    NamespacedKey key = NamespacedKey.minecraft(typeName.toLowerCase());
+                    PotionEffectType type = Registry.EFFECT.get(key);
                     if (type == null) {
                         System.err.println("[ArmorBuffs] Unknown potion effect: " + typeName);
                         continue;

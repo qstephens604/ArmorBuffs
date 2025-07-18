@@ -1,6 +1,5 @@
 package com.frostwoodmc.armorbuffs;
 
-import com.frostwoodmc.armorbuffs.model.ArmorSet;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
